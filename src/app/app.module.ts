@@ -9,6 +9,13 @@ import { WeatherDetailsComponent } from './components/weather-details/weather-de
 import { ForecastComponent } from './components/forecast/forecast.component';
 import {RouterModule} from "@angular/router";
 
+//librerias graficas
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +29,16 @@ import {RouterModule} from "@angular/router";
     BrowserAnimationsModule,
     RouterModule.forRoot(
       [
-        {path: 'dashboard', component: DashboardComponent },
+        {path: 'dashboard', component: DashboardComponent},
         {path: 'search', component: SearchLocationComponent},
         {path: 'details/:id', component: WeatherDetailsComponent},
         {path: 'forecast/:id', component: ForecastComponent},
         {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
       ]
-    )
+    ),
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
