@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {StoreService} from "../../services/store.service"; //obtener los datos del servicio
+import {StoreService} from "../../services/store.service";
+import {WeatherLocation} from "../../models/weather-location"; //obtener los datos del servicio
 
 
 @Component({
@@ -10,15 +11,22 @@ import {StoreService} from "../../services/store.service"; //obtener los datos d
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router:Router, private storeService: StoreService) { }
+  constructor(public router:Router, public storeService: StoreService) { }
 
   ngOnInit(): void {
   }
 
+  public location: WeatherLocation;
 
   addLocation(){
     console.log('Ir a addLocation');
     this.router.navigateByUrl('/search');
   }
+
+  removeLocation(location: WeatherLocation) {
+    console.log(`[DashboardComponent] removeLocation(${location.name})`);
+    this.storeService.removeLocation(location.id);
+  }
+
 
 }

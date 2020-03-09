@@ -8,7 +8,7 @@ import { WeatherLocation } from '../models/weather-location';
 })
 export class StoreService {
 
-  private locations: WeatherLocation[] = [];
+  public locations: WeatherLocation[] = [];
 
   constructor() {
     this.locations.push({
@@ -34,7 +34,7 @@ export class StoreService {
 
   }
 
-  listLocation(): WeatherLocation[]{
+  listLocations(): WeatherLocation[]{
     console.log(`[StoreService listLocation()]`);
     return this.locations;
 

@@ -14,6 +14,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {WeatherCardComponent} from "./components/weather-card/weather-card.component";
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import {MatIconModule} from "@angular/material/icon";
     DashboardComponent,
     SearchLocationComponent,
     WeatherDetailsComponent,
-    ForecastComponent
+    ForecastComponent,
+    WeatherCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import {MatIconModule} from "@angular/material/icon";
     ),
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

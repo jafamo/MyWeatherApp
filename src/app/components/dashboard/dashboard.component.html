@@ -6,3 +6,14 @@
     <mat-icon>+</mat-icon>
   </button>
 </mat-toolbar>
+
+
+
+
+
+<app-weather-card
+  [location]="location"
+  (removed)="removeLocation($event)"
+  *ngFor="let location of storeService.listLocations()">
+
+</app-weather-card>

@@ -24,6 +24,7 @@ export class WeatherLocationService {
                     country: 'ES'
                   };
               cb(null, [location]);
+              console.log('entra aqui');
   }
 
   constructor() { }

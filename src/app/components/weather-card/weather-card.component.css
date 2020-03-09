@@ -1,0 +1,15 @@
+mat-card {
+  margin: 20px;
+}
+
+mat-card-header {
+  justify-content: space-between;
+}
+
+mat-card-content {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}
