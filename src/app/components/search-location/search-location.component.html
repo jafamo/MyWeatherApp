@@ -1,1 +1,29 @@
-<p>search-location works!</p>
+<mat-toolbar color="primary">
+  <button mat-button>
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Add  location</span>
+</mat-toolbar>
+
+
+
+
+
+<div style="margin:20px; display: flex;">
+  <mat-form-field class="example-form-field">
+    <input  type="text" matInput placeholder="Enter city" [(ngModel)]="city" >
+    <button mat-button matSuffix mat-icon-button (click)="search()" >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<mat-list>
+  <mat-list-item  *ngFor="let location of locations">
+    <h4 matLine>{{ location.name}}</h4>
+    <button mat-icon-button>
+      <mat-icon (click)="addLocation(location)">add</mat-icon>
+    </button>
+    <p matLine>{{location.country}}, {{location.lat}}, {{location.lon}}</p>
+  </mat-list-item>
+</mat-list>

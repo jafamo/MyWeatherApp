@@ -16,6 +16,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {WeatherCardComponent} from "./components/weather-card/weather-card.component";
 import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -44,7 +48,11 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule, //para el search
+    MatInputModule,
+    FormsModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
