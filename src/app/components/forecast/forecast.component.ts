@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-forecast',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForecastComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+
+  }
+
+  back(){
+    console.log(`[ForecastComponent] back()`);
+    this.route.navigateByUrl('/dashboard');
   }
 
 }

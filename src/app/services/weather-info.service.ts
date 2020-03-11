@@ -39,12 +39,16 @@ export class WeatherInfoService {
     this.findCurrentWeather(location, (err, info) =>{
       if(err) cb(err, null);
       else{
+        console.log('Entramos en el findForecast');
         let forecast: WeatherInfo[] = [];
         for(let i=0; i < 6; i++){
+          console.log('temperatura:'+info.temp);
           forecast.push(info);
         }
+        console.log('aqui el forecast:'+forecast.length);
       }
     } );
+
 
   }
 
