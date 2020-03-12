@@ -21,7 +21,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatListModule} from "@angular/material/list";
 import {WeatherLocationService} from "./services/weather-location.service";
-import { ForcastCardComponent } from './components/forcast-card/forcast-card.component';
+import { ForecastCardComponent } from './components/forecast-card/forecast-card.component';
 
 
 
@@ -33,7 +33,7 @@ import { ForcastCardComponent } from './components/forcast-card/forcast-card.com
     WeatherDetailsComponent,
     ForecastComponent,
     WeatherCardComponent,
-    ForcastCardComponent,
+    ForecastCardComponent,
 
 
   ],

@@ -8,6 +8,7 @@ import { WeatherInfo } from '../models/weather-info';
 })
 export class WeatherInfoService {
 
+
   constructor() { }
 
   findCurrentWeather(location: WeatherLocation, cb: (err: Error, info: WeatherInfo) => void): void {
@@ -36,23 +37,23 @@ export class WeatherInfoService {
    */
   findForecast(location: WeatherLocation, ini: number, end: number, cb:(err:Error, forecast: WeatherInfo[])=> void): void{
     console.log(`findForecast(${location.name}, ${ini},${end})`);
+
     this.findCurrentWeather(location, (err, info) =>{
-      if(err) cb(err, null);
+      if(err) {
+        console.log('error en el if del findForecast');
+        cb(err, null);
+      }
       else{
         console.log('Entramos en el findForecast');
         let forecast: WeatherInfo[] = [];
-        for(let i=0; i < 6; i++){
-          console.log('temperatura:'+info.temp);
+        for(let i=0; i < 6; i++) {
           forecast.push(info);
         }
-        console.log('aqui el forecast:'+forecast.length);
       }
-    } );
-
-
+    });
   }
 
 
 
-}
 
+}

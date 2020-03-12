@@ -6,17 +6,17 @@ import {WeatherInfoService} from "../../services/weather-info.service";
 import {WeatherInfo} from "../../models/weather-info";
 
 @Component({
-  selector: 'app-forcast-card',
-  templateUrl: './forcast-card.component.html',
-  styleUrls: ['./forcast-card.component.css']
+  selector: 'app-forecast-card',
+  templateUrl: './forecast-card.component.html',
+  styleUrls: ['./forecast-card.component.css']
 })
-export class ForcastCardComponent implements OnInit {
+export class ForecastCardComponent implements OnInit {
 
   public info: WeatherInfo;
   public location: WeatherLocation;
-  public info2: WeatherInfo[] = [];
   public forecast: WeatherInfo[] = [];
-
+  public ini = 0;
+  public end = 4;
 
   constructor(public router: ActivatedRoute,
               public store: StoreService,
@@ -25,7 +25,7 @@ export class ForcastCardComponent implements OnInit {
 
   ngOnInit(): void {
     let ini = 0;
-    let end = 5;
+    let end = 4;
     let id = Number(this.router.snapshot.paramMap.get('id'));
     console.log(`[ForecastCardComponent] id`);
     this.location = this.store.findLocation(id);
@@ -36,19 +36,21 @@ export class ForcastCardComponent implements OnInit {
     this.service.findCurrentWeather(this.location, (err, info) => {
       this.info = info;
     });
-    console.log(this.info.ts);
+
+    this.service.findForecast(this.location, this.ini, this.end, (err, forecast )=> {
+      this.forecast = forecast;
+    });
+
+    console.log(this.forecast.length);
+
+
 
     this.convert();
 
 
-    /*
-        this.service.findForecast(this.location, ini, end, (err, forecast )=> {
-          this.forecast = forecast;
-
-        });
-    */
 
   }
+
 
   convert(){
     var a = new Date(this.info.ts );
