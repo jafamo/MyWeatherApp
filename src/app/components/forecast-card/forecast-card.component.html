@@ -1,4 +1,15 @@
-<p>forcast-card works!</p>
-<p id="datetime"></p>
+<div style="padding-left: 5px;">
+<p id="datetime">{{ convert() }} </p>
 
-<p>{{ forecast.toString() }}</p>
+<p *ngFor="let f of this.forecast;" >
+  <span style="padding-left: 5px;;">
+    {{this.hora }}:{{this.min}}
+    <span style="margin-left:30px ;">{{f.temp}}ºC</span>
+    <span style="margin-left:30px ; margin-top:-10px;">
+      <img [src]="'http://openweathermap.org/img/w/' + f.icon +'.png'">
+    </span>
+  </span>
+
+</p>
+
+</div>

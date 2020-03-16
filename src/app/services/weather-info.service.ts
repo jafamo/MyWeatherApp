@@ -49,6 +49,7 @@ export class WeatherInfoService {
         for(let i=0; i < 6; i++) {
           forecast.push(info);
         }
+        cb(null, forecast);
       }
     });
   }
