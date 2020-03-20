@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
 import {WeatherLocationService} from "../../services/weather-location.service";
 import {WeatherLocation} from "../../models/weather-location";
@@ -11,28 +11,28 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./search-location.component.css']
 })
 export class SearchLocationComponent implements OnInit {
-  public city: string;
+  public city: string = "";
   public locations: WeatherLocation[];
   public route: ActivatedRoute;
-
 
   constructor(public locationService: Location,
               public weatherLocationService: WeatherLocationService,
               public store: StoreService) { }
 
   ngOnInit(): void {
+
   }
 
   back(){
     console.log(`[SearchLocationComponent] back()`);
     this.locationService.back();
-
   }
 
   search(){
+
     console.log(`[SearchLocationComponent] search()`);
     this.weatherLocationService.findLocation(this.city, (err, locations ) => {
-     if(err) console.log('Error');
+     if(err) console.log('Error al buscar la ciudad');
      else{
        this.locations = locations;
      }

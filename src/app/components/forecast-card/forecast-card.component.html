@@ -1,7 +1,12 @@
-<div style="padding-left: 5px;">
-<p id="datetime">{{ convert() }} </p>
+<br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-subtitle id="datetime" > {{ convert() }}  </mat-card-subtitle>
+  </mat-card-header>
 
-<p *ngFor="let f of this.forecast;" >
+  <!--
+  <mat-card-content>
+    <p *ngFor="let f of this.forecast;" >
   <span style="padding-left: 5px;;">
     {{this.hora }}:{{this.min}}
     <span style="margin-left:30px ;">{{f.temp}}ºC</span>
@@ -9,7 +14,12 @@
       <img [src]="'http://openweathermap.org/img/w/' + f.icon +'.png'">
     </span>
   </span>
+    </p>
+  </mat-card-content>
+-->
 
-</p>
 
-</div>
+</mat-card>
+
+
+

@@ -14,6 +14,7 @@ export class ForecastCardComponent implements OnInit {
 
   public info: WeatherInfo;
   public location: WeatherLocation;
+  public location1: WeatherLocation[]=[];
   public forecast: WeatherInfo[] = [];
   public ini = 0;
   public end = 4;
@@ -30,7 +31,7 @@ export class ForecastCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getForecast();
+    //this.getForecast();
 
   }
 
@@ -68,16 +69,17 @@ export class ForecastCardComponent implements OnInit {
   }
 
 
-getCurrentWeather(){
-  let id = Number(this.router.snapshot.paramMap.get('id'));
-  console.log(`[ForecastCardComponent] id`);
-  this.location = this.store.findLocation(id);
+  getCurrentWeather(){
+    let id = Number(this.router.snapshot.paramMap.get('id'));
+    console.log(`[ForecastCardComponent] id`);
+    this.location = this.store.findLocation(id);
 
-  this.service.findCurrentWeather(this.location, (err, info) => {
-      this.info = info;
-    });
-    return this.info;
+    this.service.findCurrentWeather(this.location, (err, info) => {
+        this.info = info;
+      });
+      return this.info;
 
 }
+
 
 }

@@ -32,6 +32,8 @@ export class WeatherDetailsComponent implements OnInit {
       this.info = info;
     });
 
+    //Si !== null  hacemos el localStorage
+
   }
 
   refresh(){
