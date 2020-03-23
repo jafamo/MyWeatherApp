@@ -10,7 +10,8 @@ import {HttpClient} from "@angular/common/http";
 export class WeatherInfoService {
 
   private key = 'c60fcc50dea05a84f20dacca2a03dea7';
-  private url = 'https://api.openweathermap.org/data/2.5/weather?q=';//{city name}&appid={your api key}
+  private url_weather = 'https://api.openweathermap.org/data/2.5/weather?q=';//{city name}&appid={your api key}
+  private url_forecast = 'https://api.openweathermap.org/data/2.5/forecast?q=';//{city name}&appid={your api key}
 
   constructor(public http: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class WeatherInfoService {
     console.log("Aqui el location: "+location.id);
     //console.log("Mostramos el id:"+location[0].id);
 
-    this.http.get<any>(this.url, {params: {APPID: this.key, id: location.id.toString(), units: 'metric'}})
+    this.http.get<any>(this.url_weather, {params: {APPID: this.key, id: location.id.toString(), units: 'metric'}})
       .subscribe((info) => {
           let info1 = {
             ts: Date.now(),
@@ -73,21 +74,27 @@ export class WeatherInfoService {
   findForecast(location: WeatherLocation, ini: number, end: number, cb:(err:Error, forecast: WeatherInfo[])=> void): void{
     console.log(`findForecast(${location.name}, ${ini},${end})`);
 
-    this.findCurrentWeather(location, (err, info) =>{
-      if(err) {
-        console.log('error en el if del findForecast');
-        cb(err, null);
+    this.http.get<any>(this.url_forecast,{params:{ APPID: this.key, id: location.id.toString(), units: 'metric'}  }).subscribe(
+      (forecast) =>{
+        this.findCurrentWeather(location, (err, info) =>{
+          if(err) {
+            console.log('error en el if del findForecast');
+            cb(err, null);
+          }
+          else{
+            let forecast: WeatherInfo[] = [];
+            for(let i=0; i < 6; i++) {
+              forecast.push(info);
+              console.log(forecast);
+            }
+            console.log('Salimos en el findForecast');
+            cb(null, forecast);
+          }
+        });
+
       }
-      else{
-        console.log('Entramos en el findForecast');
-        let forecast: WeatherInfo[] = [];
-        for(let i=0; i < 6; i++) {
-          forecast.push(info);
-        }
-        cb(null, forecast);
-      }
-    });
-  }
+    );}
+
 
 
 }

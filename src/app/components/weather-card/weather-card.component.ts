@@ -76,8 +76,8 @@ export class WeatherCardComponent implements OnInit {
     this.router.navigateByUrl(`/details/${id}`);
     //this.router.navigateByUrl(`/details/${this.location.id}`);
   }
-  showForecast(){
+  showForecast(id: number){
     console.log(`[WeatherCardComponent] showForecast()`);
-    this.router.navigateByUrl(`/forecast/${this.location.id}`);
+    this.router.navigateByUrl(`/forecast/${id}`);
   }
 }

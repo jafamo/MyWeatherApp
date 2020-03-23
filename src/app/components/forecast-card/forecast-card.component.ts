@@ -15,13 +15,15 @@ export class ForecastCardComponent implements OnInit {
   public info: WeatherInfo;
   public location: WeatherLocation;
   public location1: WeatherLocation[]=[];
-  public forecast: WeatherInfo[] = [];
+  public forecast: WeatherInfo[] = []
+
   public ini = 0;
   public end = 4;
+  //variables para acceder desde el template
   public hora: Number;
   public min : Number;
   public dias: String[]=[];
-
+  public tiempo: string[]=[];
 
 
   constructor(public router: ActivatedRoute,
@@ -31,14 +33,32 @@ export class ForecastCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //this.getForecast();
+    //encapsular en un método
 
+    let id = Number(this.router.snapshot.paramMap.get('id'));
+    console.log("[ForecastCardComponent]: "+id);
+    this.location = this.store.findLocation(id);
+    console.log("Mi location:"+this.location);
+
+    this.service.findForecast(this.location,0, 6, (err, forecast )=> {
+      this.forecast = forecast;
+      let total = this.forecast.length;
+      console.log(total);
+      for(let i=0; i < total; i++){
+        this.tiempo.push(this.convert(this.forecast[i].ts));
+
+        //console.log(this.forecast[i].temp);
+      }
+
+    });
+
+    //this.getForecast();
   }
 
 
-  convert(){
-    let myInfo = this.getCurrentWeather();
-    let a = new Date( myInfo.ts );
+  convert(tiempo: number){
+    //let myInfo = this.getCurrentWeather();
+    let a = new Date(tiempo);
     let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     this.dias=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"];
     let year = a.getFullYear();
@@ -52,6 +72,7 @@ export class ForecastCardComponent implements OnInit {
     document.getElementById('datetime').innerHTML = timemm;
 
   }
+
 
   getForecast(){
 
