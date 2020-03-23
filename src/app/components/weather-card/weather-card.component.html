@@ -1,8 +1,40 @@
+<!-- aqui podemos hacer un for -->
+
+<mat-card *ngFor="let myLocation of location; index as i">
+  <mat-card-header>
+    <mat-card-title>{{location[i].name}}</mat-card-title>
+    <mat-card-subtitle>{{location[i].country}}</mat-card-subtitle>
+    <div>
+      <button mat-icon-button (click)="refresh()" ><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button (click)="remove(i)"><mat-icon>clear</mat-icon></button>
+
+    </div>
+  </mat-card-header>
+
+  <mat-card-content  >
+    <span>{{ myTemp[i] }} ºC</span>
+    <img [src]="'http://openweathermap.org/img/w/' + myIcon[i] +'.png'">
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="showDetails(location[i].id)">MORE</button>
+    <button mat-button (click)="showForecast()" >FORECAST</button>
+  </mat-card-actions>
+
+</mat-card>
+
+
+
+
+
+
+
+<!--
+
 <mat-card>
   <mat-card-header>
-
-    <mat-card-title>{{location.name}}</mat-card-title>
-    <mat-card-subtitle>{{location.country}}</mat-card-subtitle>
+    <mat-card-title>{{location[0].name}}</mat-card-title>
+    <mat-card-subtitle>{{location[0].country}}</mat-card-subtitle>
     <div>
       <button mat-icon-button (click)="refresh()" ><mat-icon>refresh</mat-icon></button>
       <button mat-icon-button (click)="remove()"><mat-icon>clear</mat-icon></button>
@@ -21,3 +53,4 @@
   </mat-card-actions>
 
 </mat-card>
+-->

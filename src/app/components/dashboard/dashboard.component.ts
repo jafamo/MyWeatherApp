@@ -11,7 +11,7 @@ import {WeatherLocation} from "../../models/weather-location"; //obtener los dat
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router:Router, public storeService: StoreService) { }
+  constructor(public router:Router, public storeService: StoreService) { }
 
   ngOnInit(): void {
   }

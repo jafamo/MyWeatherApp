@@ -3,7 +3,7 @@ import {Location} from "@angular/common";
 import {WeatherLocationService} from "../../services/weather-location.service";
 import {WeatherLocation} from "../../models/weather-location";
 import {StoreService} from "../../services/store.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-search-location',
@@ -17,7 +17,8 @@ export class SearchLocationComponent implements OnInit {
 
   constructor(public locationService: Location,
               public weatherLocationService: WeatherLocationService,
-              public store: StoreService) { }
+              public store: StoreService,
+              public router:Router) { }
 
   ngOnInit(): void {
 
@@ -25,7 +26,7 @@ export class SearchLocationComponent implements OnInit {
 
   back(){
     console.log(`[SearchLocationComponent] back()`);
-    this.locationService.back();
+    this.router.navigateByUrl('/dashboard');
   }
 
   search(){
@@ -42,7 +43,8 @@ export class SearchLocationComponent implements OnInit {
   addLocation(location: WeatherLocation){
     console.log(`[SearchLocationComponent] addLocation(${location.name})`);
     this.store.addLocation(location);
-    this.locationService.back();
+    this.router.navigateByUrl('/dashboard');
+    //this.locationService.back();
 
   }
 }

@@ -24,7 +24,7 @@ export class WeatherDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let id = Number(this.router.snapshot.paramMap.get('id'));
-    console.log("Este es el id:"+id);
+    //console.log("Este es el id desde el ONINIT:"+id);
     this.location = this.store.findLocation(id);
     console.log("Mostramos el location" + this.location.id);
 

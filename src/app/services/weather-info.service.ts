@@ -15,9 +15,12 @@ export class WeatherInfoService {
   constructor(public http: HttpClient) { }
 
   findCurrentWeather(location: WeatherLocation, cb: (err: Error, info: WeatherInfo) => void): void {
-    console.log(`findCurrentWeather(${location.name})`);
+    //console.log(`findCurrentWeather(${location[0].name})`);
 
-    this.http.get<any>(this.url, {params: {APPID: this.key,  id: location.id.toString(), units:'metric' }})
+    console.log("Aqui el location: "+location.id);
+    //console.log("Mostramos el id:"+location[0].id);
+
+    this.http.get<any>(this.url, {params: {APPID: this.key, id: location.id.toString(), units: 'metric'}})
       .subscribe((info) => {
           let info1 = {
             ts: Date.now(),

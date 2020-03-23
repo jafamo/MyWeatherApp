@@ -19,7 +19,7 @@
 <mat-card-content>
   <div style="text-align: center;">
 
-    <div style="font-size: smaller; margin-right: 100px;">
+    <div style="font-size: smaller; margin-right: 160px;">
       <span style="color: red">{{info?.temp_max}}ºC</span>
       <BR>
         <span style="color: blue">{{info?.temp_min}}ºC</span>
@@ -37,7 +37,7 @@
     <mat-card-subtitle>CLOUDS: {{info?.clouds}} %</mat-card-subtitle>
     <mat-card-subtitle>PRESSURE: {{info?.pressure}}hPa</mat-card-subtitle>
     <mat-card-subtitle  >WIND: {{info?.wind}}km/h</mat-card-subtitle>
-    <mat-card-subtitle *ngIf="info.snow">SNOW: {{info?.snow}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="info.snow" >SNOW: {{info?.snow}}</mat-card-subtitle>
   </div>
 
 </mat-card-content>
