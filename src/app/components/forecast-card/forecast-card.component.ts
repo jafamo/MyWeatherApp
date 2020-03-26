@@ -24,7 +24,13 @@ export class ForecastCardComponent implements OnInit {
   public min : Number;
   public dias: String[]=[];
   public tiempo: string[]=[];
+  public data1: any[];
 
+  public allForecast: any[];
+
+  //variables para la recogida de datos de la API.
+  public temp: number[]=[];
+  public timer: Date[]=[];
 
   constructor(public router: ActivatedRoute,
               public store: StoreService,
@@ -40,19 +46,28 @@ export class ForecastCardComponent implements OnInit {
     this.location = this.store.findLocation(id);
     console.log("Mi location:"+this.location);
 
-    this.service.findForecast(this.location,0, 6, (err, forecast )=> {
-      this.forecast = forecast;
-      let total = this.forecast.length;
-      console.log(total);
-      for(let i=0; i < total; i++){
-        this.tiempo.push(this.convert(this.forecast[i].ts));
 
-        //console.log(this.forecast[i].temp);
+
+
+    this.service.findForecast(this.location, this.ini, this.end, (err, forecast )=> {
+      this.data1 = forecast;
+      this.allForecast = forecast;
+
+      console.log("pruebassss"+forecast['cod']);
+      //aqui recorremos por cada array de "list"
+      for(let i=0; i< 6; i++){
+        this.timer.push(forecast['list'][i]['dt_txt']);
+        console.log('el tiempooooo:'+ new Date(forecast['list'][i]['dt']) );
+        this.timer.push( new Date(forecast['list'][i]['dt']) );
       }
 
-    });
 
+    });
+    console.log("el forecast: "+this.data1);
     //this.getForecast();
+
+
+
   }
 
 
