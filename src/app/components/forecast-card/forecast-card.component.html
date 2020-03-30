@@ -6,11 +6,11 @@
     <mat-card-subtitle  > {{allForecast['list'][0]['dt_txt']| date: 'EEEE, MMMM d, y'}}  </mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content  *ngFor="let diaActual of arrayDia0; index as indice1" >
+  <mat-card-content class="noMargin margeIzquierdo" *ngFor="let diaActual of arrayDia0; index as indice1" >
      <span>
        {{diaActual[indice1]['hora']}}: {{diaActual[indice1]['minuto']}} --
        {{diaActual[indice1]['temperatura']}}ªC
-       <img [src]="'http://openweathermap.org/img/w/' + diaActual[indice1]['icono'] +'.png'">
+       <img  [src]="'http://openweathermap.org/img/w/' + diaActual[indice1]['icono'] +'.png'">
      </span>
   </mat-card-content>
 </mat-card>
@@ -21,7 +21,7 @@
   <mat-card-header>
     <mat-card-subtitle  > {{nextDay1 | date: 'EEEE, MMMM d, y'}}  </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content  *ngFor="let diaActual of arrayDia1; index as indice1" >
+  <mat-card-content class="noMargin margeIzquierdo" *ngFor="let diaActual of arrayDia1; index as indice1" >
      <span>
        {{diaActual[indice1]['hora']}}: {{diaActual[indice1]['minuto']}} --
        {{diaActual[indice1]['temperatura']}}ªC
@@ -38,7 +38,7 @@
   <mat-card-header>
     <mat-card-subtitle  > {{nextDay2 | date: 'EEEE, MMMM d, y'}}  </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content  *ngFor="let diaActual of arrayDia2; index as indice1" >
+  <mat-card-content class="noMargin margeIzquierdo" *ngFor="let diaActual of arrayDia2; index as indice1" >
      <span>
        {{diaActual[indice1]['hora']}}: {{diaActual[indice1]['minuto']}} --
        {{diaActual[indice1]['temperatura']}}ªC

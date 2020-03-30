@@ -98,10 +98,14 @@ export class ForecastCardComponent implements OnInit {
 
 
 
+          var today = new Date();
+
+          var dd = today.getDate();
+          this.nextDay1.setDate(dd+1);
+          let duration = 2 // 2 dias
+          this.nextDay2.setTime(today.getTime()+ ( duration * 24 * 60* 60 * 1000))
 
 
-          this.nextDay2.setDate(new Date().getDate()+2);
-          this.nextDay1.setDate(new Date().getDate()+1);
           //console.log('Dia1: '+nextDay2);
 
 
@@ -115,6 +119,7 @@ export class ForecastCardComponent implements OnInit {
 
           //DIA SIGUIENTE
           if(this.getNumDay(miTiempo) == this.nextDay1.getDate()){
+            console.log("this.getNumDay(miTiempo) == this.nextDay1.getDate()"+this.nextDay1.getDate()  );
             //console.log("dia: "+this.objDias[i]['dia']+ " Temperatura: "+this.objDias[i]['temperatura']+" ");
             this.arrayDia1.push(this.objDias); // devolver el dia actual
 
@@ -122,9 +127,14 @@ export class ForecastCardComponent implements OnInit {
           }
 
           //PASADO MAÑANA
+
+
           if(this.getNumDay(miTiempo) == this.nextDay2.getDate()){
+            console.log("this.getNumDay(miTiempo) == this.nextDay1.getDate()"+this.nextDay2.getDate()  );
             //console.log("dia: "+this.objDias[i]['dia']+ " Temperatura: "+this.objDias[i]['temperatura']+" ");
             this.arrayDia2.push(this.objDias); // devolver el dia actual
+            console.log("Dia2:"+this.nextDay2);
+            break;
 
           }
 
