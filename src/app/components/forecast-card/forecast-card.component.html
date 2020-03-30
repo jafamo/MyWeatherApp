@@ -1,38 +1,69 @@
-<br>
+
+
 <mat-card>
+
   <mat-card-header>
-    <mat-card-subtitle id="datetime" > La fecha  </mat-card-subtitle>
+    <mat-card-subtitle  > {{allForecast['list'][0]['dt_txt']| date: 'EEEE, MMMM d, y'}}  </mat-card-subtitle>
   </mat-card-header>
 
+  <mat-card-content  *ngFor="let diaActual of arrayDia0; index as indice1" >
+     <span>
+       {{diaActual[indice1]['hora']}}: {{diaActual[indice1]['minuto']}} --
+       {{diaActual[indice1]['temperatura']}}ªC
+       <img [src]="'http://openweathermap.org/img/w/' + diaActual[indice1]['icono'] +'.png'">
+     </span>
+  </mat-card-content>
+</mat-card>
 
-  <mat-card-content>
-    <p *ngFor="let f of allForecast['list']; index as j" >
 
-      <span>
-        {{f['dt_txt']}}
-        <span style="margin-left: 15px;">{{f['main']['temp']}}</span>
-        <img style="margin-left: 15px;" [src]="'http://openweathermap.org/img/w/' + f['weather'][0]['icon'] +'.png'">
 
-      </span>
-      <!--
-      <span>{{timer}} --- {{ f.temp}}ºC <img [src]="'http://openweathermap.org/img/w/' + f.icon +'.png'"></span>
-
--->
-<!--
-  <span style="padding-left: 5px;;">
-    {{this.hora }}:{{this.min}}
-    <span style="margin-left:30px ;">{{f.temp}}ºC</span>
-    <span style="margin-left:30px ; margin-top:-10px;">
-      <img [src]="'http://openweathermap.org/img/w/' + f.icon +'.png'">
-    </span>
-  </span>
-    </p>
-    -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-subtitle  > {{nextDay1 | date: 'EEEE, MMMM d, y'}}  </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content  *ngFor="let diaActual of arrayDia1; index as indice1" >
+     <span>
+       {{diaActual[indice1]['hora']}}: {{diaActual[indice1]['minuto']}} --
+       {{diaActual[indice1]['temperatura']}}ªC
+       <img [src]="'http://openweathermap.org/img/w/' + diaActual[indice1]['icono'] +'.png'">
+     </span>
   </mat-card-content>
 
+</mat-card>
 
+
+
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-subtitle  > {{nextDay2 | date: 'EEEE, MMMM d, y'}}  </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content  *ngFor="let diaActual of arrayDia2; index as indice1" >
+     <span>
+       {{diaActual[indice1]['hora']}}: {{diaActual[indice1]['minuto']}} --
+       {{diaActual[indice1]['temperatura']}}ªC
+       <img [src]="'http://openweathermap.org/img/w/' + diaActual[indice1]['icono'] +'.png'">
+     </span>
+  </mat-card-content>
 
 </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { WeatherLocation } from '../models/weather-location';
 import { WeatherInfo } from '../models/weather-info';
 import {HttpClient} from "@angular/common/http";
+import {error} from "@angular/compiler/src/util";
 
 
 @Injectable({
@@ -12,6 +13,7 @@ export class WeatherInfoService {
   private key = 'c60fcc50dea05a84f20dacca2a03dea7';
   private url_weather = 'https://api.openweathermap.org/data/2.5/weather?q=';//{city name}&appid={your api key}
   private url_forecast = 'https://api.openweathermap.org/data/2.5/forecast?q=';//{city name}&appid={your api key}
+  public test = [];
 
   constructor(public http: HttpClient) { }
 
@@ -71,6 +73,7 @@ export class WeatherInfoService {
    * @param end
    * @param cb
    */
+/* original
   findForecast(location: WeatherLocation, ini: number, end: number, cb:(err:Error, forecast: WeatherInfo[])=> void): void{
     console.log(`findForecast(${location.name}, ${ini},${end})`);
 
@@ -85,15 +88,63 @@ export class WeatherInfoService {
             let forecast: WeatherInfo[] = [];
             for(let i=0; i < 6; i++) {
               forecast.push(info);
-              console.log(forecast);
+              console.log('vamos añadiendo el forecast'+forecast[i].desc);
             }
             console.log('Salimos en el findForecast');
             cb(null, forecast);
           }
         });
-
       }
-    );}
+
+    );
+
+  }
+
+*/
+
+
+
+
+
+  findForecast(location: WeatherLocation, ini: number, end: number, cb:(err:Error, data: any[])=> void): void{
+    console.log(`findForecast(${location.name}, ${ini},${end})`);
+
+    this.http.get(this.url_forecast,{params:{ APPID: this.key, id: location.id.toString(), units: 'metric'}  }).subscribe(
+      (allForecast: any[]) =>{
+        //console.log(pruebas.list[0]);
+        console.log(allForecast);
+        if(allForecast['cod'] ==200){
+          console.log("devolvemos los valores de la API");
+          //return allForecast;
+          cb( null,allForecast);
+        }else{
+          console.log('Error al conectar con la API');
+          return null;
+        }
+
+
+
+        /*this.findCurrentWeather(location, (err, info) =>{
+          if(err) {
+            console.log('error en el if del findForecast');
+            cb(err, null);
+          }
+          else{
+            let forecast: WeatherInfo[] = [];
+            for(let i=0; i < 6; i++) {
+              forecast.push(info);
+              console.log('vamos añadiendo el forecast'+forecast[i].desc);
+            }
+            console.log('Salimos en el findForecast');
+            cb(null, forecast);
+          }
+        });*/
+      }
+
+    );
+
+  }
+
 
 
 
