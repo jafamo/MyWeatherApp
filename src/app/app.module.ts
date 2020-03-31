@@ -56,7 +56,8 @@ import { HttpClientModule} from "@angular/common/http";
     MatInputModule,
     FormsModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

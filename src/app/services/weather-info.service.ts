@@ -43,7 +43,9 @@ export class WeatherInfoService {
           } else {
             cb(null, info1);
           }
+
         },
+
         (err) => {
           console.log("Hay un error en WeatherInfoService:" + err);
           cb(err, null);
@@ -108,6 +110,7 @@ export class WeatherInfoService {
 
   findForecast(location: WeatherLocation, ini: number, end: number, cb:(err:Error, data: any[])=> void): void{
     console.log(`findForecast(${location.name}, ${ini},${end})`);
+
 
     this.http.get(this.url_forecast,{params:{ APPID: this.key, id: location.id.toString(), units: 'metric'}  }).subscribe(
       (allForecast: any[]) =>{

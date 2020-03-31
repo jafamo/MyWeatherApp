@@ -7,6 +7,8 @@ import {StoreService} from "../../services/store.service";
 import {typeIsOrHasBaseType} from "tslint/lib/language/typeUtils";
 
 
+
+
 @Component({
   selector: 'app-weather-card',
   templateUrl: './weather-card.component.html',
@@ -25,7 +27,8 @@ export class WeatherCardComponent implements OnInit {
   public myIcon = new Array;
   //public storeService: StoreService;
 
-  constructor(public weatherInfoService: WeatherInfoService, public router: Router, public storeService: StoreService) {
+  constructor(public weatherInfoService: WeatherInfoService, public router: Router, public storeService: StoreService
+              ) {
     this.storeService = storeService;
 
   }
@@ -39,8 +42,9 @@ export class WeatherCardComponent implements OnInit {
     //console.log('mi variable: '+variable[0]['name']);
     this.location = localStorage.getItem('locations') ? JSON.parse(localStorage.getItem('locations')) : [];
     console.log('aqui esta el location:'+this.location);
-    this.refresh();
+
     }
+    this.refresh();
     /*this.weatherInfoService.findCurrentWeather(this.location, (err, info) =>{
       this.info = info;});*/
   }
@@ -60,7 +64,8 @@ export class WeatherCardComponent implements OnInit {
         this.myTemp.push( this.info.temp);
         this.myIcon.push( this.info.icon);
         //console.log('temperatura:'+this.myTemp[i]);
-      });
+      },
+      );
     }
   }
 

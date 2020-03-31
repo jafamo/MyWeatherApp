@@ -1,6 +1,15 @@
-.noMargin{
-  margin-bottom: 0px;
+mat-card {
+  margin: 20px;
 }
-.margeIzquierdo{
-  margin-left:25px;
+
+mat-card-header {
+  justify-content: space-between;
+}
+
+mat-card-content {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
 }
